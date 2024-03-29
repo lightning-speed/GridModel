@@ -7,8 +7,8 @@ const IO = require("./io");
 const TraningBase = [];
 const TraningVector = [];
 async function start() {
-  const modelX = new Model(16, 16, 3);
-  //const modelX = await IO.loadModelFromFile("./model2.json");
+  //const modelX = new Model(16, 16, 3);
+  const modelX = await IO.loadModelFromFile("./model3.json");
   for (let i = 0; i < 4000; i++) {
     await addToTraningData("O");
     await addToTraningData("E");
