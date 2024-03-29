@@ -1,4 +1,4 @@
-const Model = require("./Model");
+const Model = require("./Model");
 const Vector = require("./vector");
 const ImageHandler = require("./imageHandler");
 const Trans = require("./Trans");
@@ -7,9 +7,9 @@ const IO = require("./io");
 const TraningBase = [];
 const TraningVector = [];
 async function start() {
-  //const modelX = new Model(16, 16, 3);
-  const modelX = await IO.loadModelFromFile("./model2.json");
-  for (let i = 0; i < 8000; i++) {
+  const modelX = new Model(16, 16, 3);
+  //const modelX = await IO.loadModelFromFile("./model2.json");
+  for (let i = 0; i < 4000; i++) {
     await addToTraningData("O");
     await addToTraningData("E");
     await addToTraningData("A");
@@ -17,8 +17,8 @@ async function start() {
 
   let rate = 0.012;
   console.log("traning started");
-  modelX.train(TraningBase, TraningVector, rate, -0.00000005, 8000);
-  IO.saveModelToFile(modelX, "./model2.json");
+  modelX.train(TraningBase, TraningVector, rate, -0.00000005, 800);
+  IO.saveModelToFile(modelX, "./model3.json");
   console.log("traning ended");
   let score = 0;
   for (let i = 0; i < 200; i++) {
