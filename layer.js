@@ -21,8 +21,9 @@ module.exports = class layer {
     }
     return sum;
   }
-  trainLayer(data, expectedOuputs, rate) {
+  trainLayer(data, expectedOuputs) {
     const outputs = [];
+    const mapSize = this.map.length * this.map[0].length;
     for (let i = 0; i < data.length; i++) {
       outputs.push(this.getSum(data[i]));
     }
@@ -32,14 +33,16 @@ module.exports = class layer {
         let temp = this.map[i][j];
         for (let k = 0; k < data.length; k++) {
           const element = data[k][i][j];
+
+          const diff = 1900 - (expectedOuputs[k] - outputs[k]);
           if (element == 0) continue;
           //Reduce
           else if (outputs[k] > expectedOuputs[k]) {
-            temp -= rate * element;
+            temp -= element / diff;
           }
           //Increase
           else if (outputs[k] < expectedOuputs[k]) {
-            temp += rate * element;
+            temp += element / diff;
           }
         }
         this.map[i][j] = temp;

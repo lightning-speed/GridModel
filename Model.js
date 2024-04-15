@@ -36,7 +36,7 @@ module.exports = class Model {
       this.layers[i].trainLayer(dataset, outputsForThisLayer, rateToEdit);
     }
   }
-  train(dataset, vectorset, rate, increaseInRate, iterations) {
+  train(dataset, vectorset, iterations) {
     const vecLen = vectorset[0].distancesOnAxes.length;
     for (let i = 0; i < vecLen; i++) {
       const outputsForThisLayer = [];
@@ -46,15 +46,12 @@ module.exports = class Model {
       }
       const d = new Date().getTime();
       for (let it = 0; it < iterations; it++) {
-        this.layers[i].trainLayer(
-          dataset,
-          outputsForThisLayer,
-          rate + increaseInRate * it,
-        );
+        this.layers[i].trainLayer(dataset, outputsForThisLayer);
       }
       console.log(
         "Layer Trained: " + (i + 1),
-        "\nIn Time: " + (new Date().getTime() - d) / 1000,
+        "In Time: " + (new Date().getTime() - d) / 1000,
+        "seconds",
       );
     }
   }

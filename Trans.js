@@ -37,7 +37,7 @@ module.exports = class Trans {
     for (let i = 0; i < matrix.length; i++) {
       let str = "";
       for (let j = 0; j < matrix[0].length; j++) {
-        str += matrix[i][j] >=1 ? '@' : ' ';
+        str += matrix[i][j] >= 1 ? "@" : " ";
       }
       console.log(str);
     }

@@ -29,4 +29,7 @@ module.exports = class Vector {
     const distances = this.findDistanceAmong(points);
     return distances.indexOf(Math.min(...distances));
   }
+  static generateVectorFor(data, length, rangeMin, rangeMax) {
+    return vector;
+  }
 };
